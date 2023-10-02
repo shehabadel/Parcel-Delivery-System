@@ -14,9 +14,7 @@ export class BaseRepository<T> {
     }
 
     create(entity: T|any): T {
-        if ('id' in entity) {
-            (entity as any).id = this.nextId++;
-        }
+        (entity as any).id = this.nextId++;
         this.entities.push(entity);
         return entity;
     }

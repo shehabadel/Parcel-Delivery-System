@@ -1,5 +1,8 @@
+import { Biker } from "src/bikers/entities/biker.entity";
 import { Sender } from "src/senders/entities/sender.entity";
-
+export const DUMP_BIKERS_DATA: Biker[]=[
+    
+]
 export const DUMP_SENDERS_DATA: Sender[] = [
     {
         id: 1,
