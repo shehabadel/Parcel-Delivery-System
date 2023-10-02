@@ -1,7 +1,8 @@
 export class Parcel {
-    id: string;
+    id: number;
     senderId: number;
     pickupAddress: string;
     dropoffAddress: string;
     status: string;
+    isPicked:boolean;
 }

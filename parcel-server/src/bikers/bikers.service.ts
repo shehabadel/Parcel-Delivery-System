@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBikerDto } from './dto/create-biker.dto';
 import { UpdateBikerDto } from './dto/update-biker.dto';
+import { BikerRepository } from 'src/database/models/biker/biker.repository';
 
 @Injectable()
 export class BikersService {
+  constructor(private readonly bikerRepository:BikerRepository){}
+
   create(createBikerDto: CreateBikerDto) {
-    return 'This action adds a new biker';
+    return this.bikerRepository.create(createBikerDto);
   }
 
   findAll() {
-    return `This action returns all bikers`;
+    return this.bikerRepository.findAll()
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} biker`;
+    return this.bikerRepository.findById(id)
   }
 
   update(id: number, updateBikerDto: UpdateBikerDto) {
-    return `This action updates a #${id} biker`;
+    return this.bikerRepository.update(id,updateBikerDto)
   }
 
   remove(id: number) {
-    return `This action removes a #${id} biker`;
+    return this.bikerRepository.delete(id)
   }
 }
