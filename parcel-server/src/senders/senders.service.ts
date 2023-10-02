@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSenderDto } from './dto/create-sender.dto';
 import { UpdateSenderDto } from './dto/update-sender.dto';
+import { SendersRepository } from '../database/models/sender/senders.repository';
 
 @Injectable()
 export class SendersService {
+  constructor(private readonly senderRepository:SendersRepository){}
   create(createSenderDto: CreateSenderDto) {
-    return 'This action adds a new sender';
+    return this.senderRepository.create(createSenderDto)
   }
 
   findAll() {
-    return `This action returns all senders`;
+    return this.senderRepository.findAll()
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} sender`;
+    return this.senderRepository.findById(id)
   }
 
   update(id: number, updateSenderDto: UpdateSenderDto) {
-    return `This action updates a #${id} sender`;
+
+    return this.senderRepository.update(id,updateSenderDto)
   }
 
   remove(id: number) {
-    return `This action removes a #${id} sender`;
+    return this.senderRepository.delete(id)
   }
 }

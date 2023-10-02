@@ -23,8 +23,8 @@ export class SendersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSenderDto: UpdateSenderDto) {
-    return this.sendersService.update(+id, updateSenderDto);
+  update(@Param('id') id: string, @Body() sender: UpdateSenderDto) {
+    return this.sendersService.update(+id, sender);
   }
 
   @Delete(':id')
