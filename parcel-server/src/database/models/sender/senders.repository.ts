@@ -11,4 +11,7 @@ export class SendersRepository extends BaseRepository<Sender> {
             this.create(sender)
         })
     }
+    public findByEmail(email:string){
+        return this.entities.find((sender:Sender)=>sender.email===email)
+    }
 }

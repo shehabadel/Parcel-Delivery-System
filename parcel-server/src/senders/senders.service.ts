@@ -26,4 +26,7 @@ export class SendersService {
   public remove(id: number) {
     return this.senderRepository.delete(id)
   }
+  public findByEmail(email:string){
+    return this.senderRepository.findByEmail(email)
+  }
 }
