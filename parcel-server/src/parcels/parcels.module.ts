@@ -8,6 +8,5 @@ import { BikersService } from 'src/bikers/bikers.service';
 @Module({
   controllers: [ParcelsController],
   providers: [ParcelsService, ParcelRepository],
-  imports:[SendersService, BikersService]
 })
 export class ParcelsModule {}

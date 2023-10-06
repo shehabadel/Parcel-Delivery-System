@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { ParcelsService } from './parcels.service';
 import { CreateParcelDto } from './dto/create-parcel.dto';
 import { UpdateParcelDto } from './dto/update-parcel.dto';
@@ -9,7 +9,11 @@ export class ParcelsController {
 
   @Post()
   create(@Body() createParcelDto: CreateParcelDto) {
-    return this.parcelsService.create(createParcelDto);
+    try {
+      return this.parcelsService.create(createParcelDto);
+    } catch (error) {
+      throw new HttpException('Sender not found', HttpStatus.NOT_FOUND)
+    }
   }
 
   @Get()
