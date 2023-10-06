@@ -84,4 +84,21 @@ export class ParcelsService {
     const updatedParcel = this.parcelRepository.update(parcelId, { status });    
     return updatedParcel;
   }
+
+  pickUpParcel(bikerId: number, parcelId: number) {
+    const parcel = this.parcelRepository.findById(parcelId);
+
+    if (!parcel) {
+      throw new Error('Parcel not found');
+    }
+
+    if (parcel.bikerId !== null) {
+      throw new Error('Parcel already picked up by another biker');
+    }
+
+    parcel.bikerId = bikerId;
+    parcel.status = 'In Progress';
+
+    return parcel;
+  }
 }
