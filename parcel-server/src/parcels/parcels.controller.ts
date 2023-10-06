@@ -38,23 +38,36 @@ export class ParcelsController {
 
   @Get(':id/status')
   getParcelStatus(@Param('id') id:string){
-    return this.parcelsService.getParcelStatus(+id)
+    try {
+      const status= this.parcelsService.getParcelStatus(+id)
+      return {status:status}
+    } catch (error) {
+      throw new HttpException('Parcel not found', HttpStatus.NOT_FOUND)
+    }
   }
 
   @Patch(':id/status')
-  updateParcelStatus(@Param('id') parcelId: number,
+  updateParcelStatus(@Param('id') parcelId: string,
   @Body() updateParcelStatusDto: UpdateParcelDto){
-    return this.parcelsService.updateParcelStatus(parcelId, updateParcelStatusDto.status);
+    return this.parcelsService.updateParcelStatus(+parcelId, updateParcelStatusDto.status);
   }
 
   @Get('/bikers/:id')
   getParcelsForBiker(@Param('id') bikerId){
-    return this.parcelsService.findParcelsByBikerId(+bikerId)
+    try {
+      return this.parcelsService.findParcelsByBikerId(+bikerId)
+    } catch (error) {
+      throw new HttpException('Biker not found', HttpStatus.NOT_FOUND)
+    }
   }
 
   @Get('/senders/:id')
   getParcelsForSender(@Param('id') senderId){
-    return this.parcelsService.findParcelsBySenderId(+senderId)
+    try {
+      return this.parcelsService.findParcelsBySenderId(+senderId)
+    } catch (error) {
+      throw new HttpException('Sender not found', HttpStatus.NOT_FOUND)
+    }
   }
 
   @Put('pickup/:id')

@@ -81,8 +81,8 @@ export class ParcelsService {
     return parcel.status
   }
 
-  updateParcelStatus(parcelId: number, status: string) {
-    const updatedParcel = this.parcelRepository.update(parcelId, { status });    
+  public updateParcelStatus(parcelId: number, status: string) {
+    const updatedParcel = this.parcelRepository.update(parcelId, { status });
     return updatedParcel;
   }
 
