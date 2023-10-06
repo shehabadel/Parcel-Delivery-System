@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class BaseRepository<T> {
     entities: T[] = [];
-    private nextId = 11;
+    private nextId = 0;
 
     findAll(): T[] {
         return this.entities;

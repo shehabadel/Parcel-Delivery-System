@@ -6,24 +6,24 @@ import { SendersRepository } from '../database/models/sender/senders.repository'
 @Injectable()
 export class SendersService {
   constructor(private readonly senderRepository:SendersRepository){}
-  create(createSenderDto: CreateSenderDto) {
+  public create(createSenderDto: CreateSenderDto) {
     return this.senderRepository.create(createSenderDto)
   }
 
-  findAll() {
+  public findAll() {
     return this.senderRepository.findAll()
   }
 
-  findOne(id: number) {
+  public findOne(id: number) {
     return this.senderRepository.findById(id)
   }
 
-  update(id: number, updateSenderDto: UpdateSenderDto) {
+  public update(id: number, updateSenderDto: UpdateSenderDto) {
 
     return this.senderRepository.update(id,updateSenderDto)
   }
 
-  remove(id: number) {
+  public remove(id: number) {
     return this.senderRepository.delete(id)
   }
 }

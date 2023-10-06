@@ -14,7 +14,7 @@ export class CreateParcelDto {
 
     @IsNotEmpty()
     @IsString()
-    status: string;
+    status?: string;
 
     @IsBoolean()
     isPicked?:boolean;

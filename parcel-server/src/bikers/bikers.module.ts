@@ -6,5 +6,6 @@ import { BikerRepository } from 'src/database/models/biker/biker.repository';
 @Module({
   controllers: [BikersController],
   providers: [BikersService, BikerRepository],
+  exports:[BikersService,BikerRepository]
 })
 export class BikersModule {}

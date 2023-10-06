@@ -8,13 +8,14 @@ import { Parcel } from './entities/parcel.entity';
 
 @Injectable()
 export class ParcelsService {
-  private readonly sendersService: SendersService
-  private readonly bikerService: BikersService
-  constructor(private readonly parcelRepository: ParcelRepository){}
+  constructor(
+    private readonly parcelRepository: ParcelRepository, 
+    private readonly sendersService:SendersService,
+    private readonly bikerService: BikersService
+    ){}
 
   create(createParcelDto: CreateParcelDto) {
     const sender = this.sendersService.findOne(createParcelDto.senderId);
-    
     if (!sender) {
       throw new Error('Sender not found');
     }
