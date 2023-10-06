@@ -6,5 +6,6 @@ import { SendersRepository } from '../database/models/sender/senders.repository'
 @Module({
   controllers: [SendersController],
   providers: [SendersService,SendersRepository],
+  exports:[SendersService]
 })
 export class SendersModule {}

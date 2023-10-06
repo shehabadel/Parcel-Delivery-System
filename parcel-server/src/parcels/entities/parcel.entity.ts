@@ -5,4 +5,7 @@ export class Parcel {
     dropoffAddress: string;
     status: string;
     isPicked:boolean;
+    bikerId:number;
+    pickupTime: string;
+    deliveryTime:string;
 }

@@ -31,4 +31,25 @@ export class ParcelsController {
   remove(@Param('id') id: string) {
     return this.parcelsService.remove(+id);
   }
+
+  @Get(':id/status')
+  getParcelStatus(@Param('id') id:string){
+    return this.parcelsService.getParcelStatus(+id)
+  }
+
+  @Patch(':id/status')
+  updateParcelStatus(@Param('id') parcelId: number,
+  @Body() updateParcelStatusDto: UpdateParcelDto){
+    return this.parcelsService.updateParcelStatus(parcelId, updateParcelStatusDto.status);
+  }
+
+  @Get('/bikers/:id')
+  getParcelsForBiker(@Param('id') bikerId){
+    return this.parcelsService.findParcelsByBikerId(+bikerId)
+  }
+
+  @Get('/senders/:id')
+  getParcelsForSender(@Param('id') senderId){
+    return this.parcelsService.findParcelsBySenderId(+senderId)
+  }
 }

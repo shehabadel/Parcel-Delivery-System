@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsNumber, IsBoolean } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
 export class CreateParcelDto {
     @IsNotEmpty()
     @IsNumber()
@@ -18,4 +18,16 @@ export class CreateParcelDto {
 
     @IsBoolean()
     isPicked?:boolean;
+
+    @IsNumber()
+    @IsOptional()
+    bikerId?:number;
+
+    @IsString()
+    @IsOptional()
+    pickupTime?:string;
+
+    @IsString()
+    @IsOptional()
+    deliveryTime?:string;
 }
