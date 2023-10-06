@@ -1,0 +1,3 @@
+export const jwtConstants = {
+    secret: 'THIS SECRET SHOULD NOT BE IN THE SOURCE CODE BUT I AM JUST DOING A MOCK SO IT IS OKAY',
+};
